@@ -12,7 +12,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '25'
           cache: npm
           cache-dependency-path: package-lock.json
 
@@ -22,7 +22,8 @@ jobs:
       - name: Run tests
         run: npm test
         
-  deploy: 
+  deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -31,7 +32,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '25'
           cache: npm
           cache-dependency-path: package-lock.json
 
